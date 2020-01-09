@@ -53,6 +53,7 @@ export class Splash extends Component {
       const userStats = await getUserInfo(statsURL);
       const user = await this.createUser(basicUserInfo, userStats);
       this.props.addUser(user);
+      this.props.history.push('/profile');
     }
     catch (error) {
       this.setState({error: error.message});

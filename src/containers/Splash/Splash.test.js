@@ -155,6 +155,15 @@ describe('Splash', () => {
       });
     });
 
+    it('Should push the correct URL to history if the promises resolve', () => {
+      instance.createUser = jest.fn();
+      getUserInfo.mockImplementation(() => {
+          return Promise.resolve(mockUser)
+      });
+      instance.fetchUser(mockState);
+      expect(instance.props.history.push).toHaveBeenCalledWith('/profile');
+    });
+
   });
 
   describe('createUser', () => {
