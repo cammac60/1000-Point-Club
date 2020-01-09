@@ -1,18 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Route } from 'react-router-dom';
+
 import './App.scss';
 
-export class App extends Component {
-  constructor() {
-    super();
-    this.state = {}
-  }
-  render = () => {
-    return (
-      <div className="App">
+import Splash from '../../containers/Splash/Splash.js';
 
-      </div>
-    );
-  }
+const App = () => {
+  return (
+    <div className="App">
+      <Route exact path="/" render={() => <Splash />} />
+    </div>
+  );
 }
 
 
