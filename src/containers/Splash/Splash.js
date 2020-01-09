@@ -6,7 +6,7 @@ import { getUserInfo } from '../../apiCalls/apiCalls';
 import { addUser } from '../../actions';
 import './Splash.scss';
 
-class Splash extends Component {
+export class Splash extends Component {
   constructor(props) {
     super(props);
     this.state = {
