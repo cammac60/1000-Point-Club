@@ -19,4 +19,13 @@ describe('User', () => {
       expect(result).toEqual(mockUser);
   });
 
+  it('Should return null if the action type is REMOVE_USER', () => {
+    const mockAction = {
+      type: 'REMOVE_USER',
+      user: null
+    };
+    const result = user(null, mockAction);
+    expect(result).toEqual(null);
+  });
+
 });

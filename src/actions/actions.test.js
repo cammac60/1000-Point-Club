@@ -14,4 +14,13 @@ describe('actions', () => {
     expect(result).toEqual(expectedAction);
   });
 
+  it('Should have a type of REMOVE_USER for a removeUser action', () => {
+    const expectedAction = {
+      type: 'REMOVE_USER',
+      user: null
+    };
+    const result = actions.removeUser();
+    expect(result).toEqual(expectedAction);
+  });
+
 });
