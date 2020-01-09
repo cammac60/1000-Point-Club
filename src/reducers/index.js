@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { favoriteTeams } from './favoriteTeams';
+import { user } from './User';
 
 const rootReducer = combineReducers({
-  favorites: favoriteTeams
+  user
 });
 
 export default rootReducer;

@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getUserInfo } from '../../apiCalls/apiCalls';
+import { addUser } from '../../actions';
 import './Splash.scss';
 
 class Splash extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       id: '',
       error: ''
@@ -45,12 +49,38 @@ class Splash extends Component {
     let baseInfoURL = `https://statsapi.web.nhl.com/api/v1/people/${id}`;
     let statsURL = `${baseInfoURL}/stats?stats=careerRegularSeason`;
     try {
-      
+      const basicUserInfo = await getUserInfo(baseInfoURL);
+      const userStats = await getUserInfo(statsURL);
+      const user = await this.createUser(basicUserInfo, userStats);
+      this.props.addUser(user);
     }
-    catch {
-
+    catch (error) {
+      this.setState({error: error.message});
     }
   }
+
+  createUser = (basicUserInfo, userStatsInfo) => {
+    let basicData = basicUserInfo.people[0];
+    let userCareerStats = userStatsInfo.stats[0].splits[0].stat;
+    let user = {
+      id: basicData.id,
+      name: basicData.fullName,
+      birthDate: basicData.birthDate,
+      birthCity: basicData.birthCity,
+      birthStateProvince: basicData.birthStateProvince,
+      birthCountry: basicData.birthCountry,
+      position: basicData.primaryPosition.code,
+      stats: userCareerStats
+    }
+    return user;
+  }
+
 }
 
-export default Splash;
+export const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    addUser
+  }, dispatch)
+)
+
+export default withRouter(connect(null, mapDispatchToProps)(Splash));

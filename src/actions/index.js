@@ -1,4 +1,4 @@
-export const addToDo = todo => ({
- type: 'ADD_TODO',
- todo
+export const addUser = user => ({
+ type: 'ADD_USER',
+ user
 });
