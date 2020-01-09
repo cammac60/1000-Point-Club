@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { removeUser } from '../../actions';
 import './Header.scss';
 
-class Header extends Component {
+export class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {}
