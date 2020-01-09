@@ -1,0 +1,56 @@
+@import '../../variables.scss';
+
+.main-header {
+  background-color: $main-accent-color;
+  display: flex;
+  font-family: $small-font;
+  height: 10%;
+  justify-content: space-between;
+}
+
+.header-logo {
+  height: 90%;
+  margin: {
+    bottom: auto;
+    left: 5px;
+    top: auto;
+  }
+}
+
+.header-links-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: {
+    bottom: auto;
+    top: auto;
+  }
+  width: 60%;
+}
+
+.nav-link {
+  color: $main-color;
+  font-size: 1.6rem;
+  text-decoration: none;
+  &:hover {
+    color: $text-color;
+    text-decoration: underline;
+  }
+}
+
+.sign-out-button {
+  background-color: $main-color;
+  border-radius: 90px;
+  color: $text-color;
+  height: 45%;
+  margin: {
+    bottom: auto;
+    right: 15px;
+    top: auto;
+  }
+  outline: none;
+  width: 100px;
+  &:active {
+    background-color: $text-color-large;
+    color: $main-color;
+  }
+}
