@@ -1,13 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { App, mapStateToProps, mapDispatchToProps } from './App.js';
-import { getUserInfo } from '../../apiCalls/apiCalls';
+import { getUserInfo, getThousandClub } from '../../apiCalls/apiCalls';
 import { addMembers } from '../../actions';
 
 jest.mock('../../apiCalls/apiCalls');
 
 describe('App', () => {
   let wrapper, instance;
+  const addMembers = jest.fn();
   let mockState = {
     id: '',
     error: ''
@@ -15,14 +16,44 @@ describe('App', () => {
   const mockUser = {
     id: '1'
   }
+  const mockMembers = {
+    data: [
+      {
+        id: {
+          skaterId: 1
+        }
+      },
+      {
+        id: {
+          skaterId: 2
+        }
+      }
+    ]
+  };
+  const mockProps = {
+    addMembers
+  }
 
   beforeEach(() => {
-    wrapper = shallow(<App />);
+    wrapper = shallow(<App {...mockProps}/>);
     instance = wrapper.instance();
+    getThousandClub.mockImplementation(() => {
+      return Promise.resolve(mockMembers)
+    });
   });
 
   it('Should match the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
+  });
+
+  describe('componentDidMount', () => {
+
+    it('Should call fetchClub on page load', () => {
+      instance.fetchClub = jest.fn();
+      instance.componentDidMount();
+      expect(instance.fetchClub).toHaveBeenCalled();
+    });
+
   });
 
   describe('fetchUser', () => {
@@ -106,6 +137,27 @@ describe('App', () => {
         position: 'position',
         stats: 'stats'
       });
+    });
+
+  });
+
+  describe('fetchClub', () => {
+
+    it('Should call getThousandClub with the correct url', () => {
+      instance.fetchClub();
+      expect(getThousandClub).toHaveBeenCalledWith('https://records.nhl.com/site/api/milestone-1000-point-career');
+    });
+
+    it('Should call createMembers with the correct argument', async () => {
+      instance.createMembers = jest.fn();
+      await instance.fetchClub();
+      expect(instance.createMembers).toHaveBeenCalledWith([1, 2]);
+    });
+
+    it('Should call addMembers with the corrrect argument if the promise resolves', async () => {
+      instance.createMembers = jest.fn(ids => ids);
+      await instance.fetchClub();
+      expect(instance.props.addMembers).toHaveBeenCalledWith([1, 2]);
     });
 
   });
