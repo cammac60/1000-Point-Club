@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 
 import './Club.scss';
 
 export class Club extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render = () => {
+    console.log(this.props.members);
     return (
       <div></div>
     )
@@ -16,4 +17,9 @@ export class Club extends Component {
 
 }
 
-export default Club;
+export const mapStateToProps = state => ({
+  user: state.user,
+  members: state.members
+});
+
+export default connect(mapStateToProps)(Club);
