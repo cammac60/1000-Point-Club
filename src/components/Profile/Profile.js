@@ -9,6 +9,11 @@ const Profile = ({ user }) => {
   let pointsPerGame = Math.round((user.stats.points/user.stats.games) * 100) / 100;
   let welcomeHeader = user.stats.points >= 1000 ?
   'welcome-header-1k' : 'welcome-header';
+  let difference = 1000 - user.stats.points;
+  let gamesToOneThousand = Math.ceil(difference / pointsPerGame);
+  let feedbackText = user.stats.points >= 1000 ?
+    `Congrats, you are in the club with ${user.stats.points} points!` :
+    `You only need ${difference} more points to join the club! If you continue at your current pace, you'll hit the mark in ${gamesToOneThousand} games.`;
   return (
     <div className="profile-wrapper">
       <h2 className={welcomeHeader}>Welcome, {user.name}!</h2>
@@ -37,6 +42,13 @@ const Profile = ({ user }) => {
           </div>
         </section>
         <section className="user-status-wrapper">
+          <h3 className="user-status-header">1000 Point Club Status</h3>
+          <div className="status-nums-wrap">
+            <span className="status-num">{user.stats.points}</span>
+            <hr/>
+            <span className="status-num">1000</span>
+          </div>
+          <p className="feedback-text">{feedbackText}</p>
         </section>
       </section>
     </div>

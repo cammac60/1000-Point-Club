@@ -77,3 +77,33 @@
 .user-stat-type {
   font-weight: bold;
 }
+
+.user-stats-wrapper {
+  text-align: center;
+}
+
+.user-status-header {
+  font: {
+    family: $large-font;
+    size: 2.5rem;
+  }
+  margin: {
+    bottom: 15%;
+    top: 20px;
+  }
+}
+
+.status-nums-wrap {
+  font-size: 2rem;
+  margin: {
+    bottom: 15%;
+    left: auto;
+    right: auto;
+    top: 10px;
+  }
+  width: 22%;
+}
+
+.feedback-text {
+  font-size: 1.4rem;
+}

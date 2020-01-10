@@ -18,7 +18,7 @@ export class Header extends Component {
         <nav className="header-links-wrapper">
           <Link to="/profile" className="nav-link">Your Stats</Link>
           <Link to="/1000club" className="nav-link">1000 Point Club</Link>
-          <Link to="/search" className="nav-link">Search</Link>
+          <Link to="/search" className="nav-link">Search Players</Link>
         </nav>
         <button className="sign-out-button" onClick={this.logOut}>Sign Out ></button>
       </header>
