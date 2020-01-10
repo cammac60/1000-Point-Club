@@ -1,0 +1,27 @@
+@import '../../variables.scss';
+
+.club-wrapper {
+  background: {
+    attachment: fixed;
+    color: rgba(0, 0, 0, 0.6);
+    image: url('../../images/backgrounds/bobby-orr-bck.jpg');
+    position: center;
+    repeat: no-repeat;
+    size: cover;
+  }
+  background-blend-mode: darken;
+  font-family: $small-font;
+  height: 90%;
+  margin: 0;
+  width: 100%;
+}
+
+.legend-card {
+  height: 40%;
+  margin: {
+    left: auto;
+    right: auto;
+    top: 5%;
+  }
+  width: 90%;
+}

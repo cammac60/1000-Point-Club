@@ -1,21 +1,23 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Splash, mapDispatchToProps } from './Splash.js';
-import { getUserInfo } from '../../apiCalls/apiCalls';
 import { addUser } from '../../actions';
+import { getUserInfo } from '../../apiCalls/apiCalls';
 
 jest.mock('../../apiCalls/apiCalls');
 
 describe('Splash', () => {
   let wrapper, instance, mockEvent;
   const addUser = jest.fn();
+  const fetchUser =jest.fn();
   const mockProps = {
     addUser,
+    fetchUser,
     history: {
       push: jest.fn()
     }
   }
-  const mockState = {
+  let mockState = {
     id: '',
     error: ''
   };
@@ -81,9 +83,8 @@ describe('Splash', () => {
         id: '1',
         error: ''
       }
-      instance.fetchUser = jest.fn();
       instance.handleSubmit(mockEvent);
-      expect(instance.fetchUser).toHaveBeenCalledWith(instance.state);
+      expect(instance.props.fetchUser).toHaveBeenCalledWith(instance.state.id);
     });
 
     it('Should add the correcrt error message to state if no ID has been entered', () => {
@@ -98,61 +99,14 @@ describe('Splash', () => {
       });
     });
 
-  });
-
-  describe('fetchUser', () => {
-
-    it('Should call the getUserInfo method with the base URL argument', () => {
-      getUserInfo.mockImplementation(() => {});
-      instance.state = {
-        id: '1',
-        error: ''
-      };
-      instance.fetchUser(instance.state);
-      expect(getUserInfo).toHaveBeenCalledWith(`https://statsapi.web.nhl.com/api/v1/people/1`);
-    });
-
-    it('Should call the getUserInfo method with the base URL argument', () => {
-      getUserInfo.mockImplementation(() => {});
-      instance.state = {
-        id: '1',
-        error: ''
-      };
-      instance.fetchUser(instance.state);
-      expect(getUserInfo).toHaveBeenCalledWith(`https://statsapi.web.nhl.com/api/v1/people/1/stats?stats=careerRegularSeason`);
-    });
-
-    it('Should call the createUser method with the correct argument', async () => {
-      instance.createUser = jest.fn();
-      getUserInfo.mockImplementation(() => {
-          return Promise.resolve(mockUser)
-      });
-      await instance.fetchUser(mockState);
-      expect(instance.createUser).toHaveBeenCalledWith(mockUser, mockUser)
-    });
-
     it('Should call the addUser method with the correct argument', async () => {
-      instance.createUser = jest.fn(() => mockUser);
-      getUserInfo.mockImplementation(() => {
-          return Promise.resolve(mockUser)
-      });
-      await instance.fetchUser(mockState);
-      expect(instance.props.addUser).toHaveBeenCalledWith(mockUser);
-    });
-
-    it('Should add an error message to state if the promise rejects', async () => {
-      getUserInfo.mockImplementation(() => {
-          return Promise.reject(Error('error'))
-      });
       instance.state = {
-        id: '',
+        id: '1',
         error: ''
       }
-      await instance.fetchUser(mockState);
-      expect(instance.state).toEqual({
-        id: '',
-        error: 'error'
-      });
+      instance.props.fetchUser.mockImplementation(() => mockUser);
+      await instance.handleSubmit(mockEvent);
+      expect(instance.props.addUser).toHaveBeenCalledWith(mockUser);
     });
 
     it('Should push the correct URL to history if the promises resolve', () => {
@@ -160,45 +114,8 @@ describe('Splash', () => {
       getUserInfo.mockImplementation(() => {
           return Promise.resolve(mockUser)
       });
-      instance.fetchUser(mockState);
+      instance.props.fetchUser(mockState);
       expect(instance.props.history.push).toHaveBeenCalledWith('/profile');
-    });
-
-  });
-
-  describe('createUser', () => {
-    const mockUserInfo = {
-      people: [{
-        id: '1',
-        fullName: 'name',
-        birthDate: 'birthDate',
-        birthCity: 'birthCity',
-        birthCountry: 'birthCountry',
-        birthStateProvince: 'birthStateProvince',
-        primaryPosition: {
-            code: 'position'
-          }
-      }]
-    };
-    const mockStats = {
-      stats: [{
-        splits: [{
-          stat: 'stats'
-        }]
-      }]
-    }
-
-    it('Should create and return a user object', () => {
-      expect(instance.createUser(mockUserInfo, mockStats)).toEqual({
-        id: '1',
-        name: 'name',
-        birthDate: 'birthDate',
-        birthCity: 'birthCity',
-        birthCountry: 'birthCountry',
-        birthStateProvince: 'birthStateProvince',
-        position: 'position',
-        stats: 'stats'
-      });
     });
 
   });
