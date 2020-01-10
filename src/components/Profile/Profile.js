@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import './Profile.scss';
 
-const Profile = ({ user }) => {
+export const Profile = ({ user }) => {
   console.log(user);
   let pointsPerGame = Math.round((user.stats.points/user.stats.games) * 100) / 100;
   let welcomeHeader = user.stats.points >= 1000 ?

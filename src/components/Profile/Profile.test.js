@@ -1,5 +1,5 @@
 import React from 'react';
-import Profile, { mapStateToProps } from './Profile.js';
+import { Profile, mapStateToProps } from './Profile.js';
 import { shallow } from 'enzyme';
 
 describe('Profile', () => {
@@ -29,8 +29,12 @@ describe('Profile', () => {
   });
 
   it('Should match the snapshot', () => {
-    instance.props = mockProps;
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('Should change the main header class if the user has over 1000 points', () => {
+    user.stats.points = 1001;
+    expect('.welcome-header-1k').toBeDefined();
   });
 
 });
