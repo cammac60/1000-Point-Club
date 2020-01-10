@@ -25,7 +25,10 @@ const App = props => {
       />
       <Route exact path="/1000club" render={() =>
         props.members ?
-        <Club members={props.members}/> :
+        <>
+          <Header />
+          <Club />
+        </> :
         <Loader />}
       />
     </div>

@@ -78,7 +78,7 @@ export class Header extends Component {
       birthCountry: basicData.birthCountry,
       position: basicData.primaryPosition.code,
       stats: userCareerStats
-    }
+    };
     return user;
   }
 

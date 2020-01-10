@@ -8,10 +8,21 @@ export class Club extends Component {
     super(props);
   }
 
+
   render = () => {
     console.log(this.props.members);
+    let cards = this.props.members.map(mem => {
+      return (
+        <section className="legend-card">
+          {mem.id}
+        </section>
+      )
+    });
+    console.log(cards);
     return (
-      <div></div>
+      <div className="club-wrapper">
+        {cards}
+      </div>
     )
   }
 
