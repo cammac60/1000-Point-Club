@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { removeUser } from '../../actions';
-import { getThousandClub } from '../../apiCalls/apiCalls';
+import { getThousandClub, getUserInfo } from '../../apiCalls/apiCalls';
 import './Header.scss';
 
 export class Header extends Component {
@@ -35,16 +35,35 @@ export class Header extends Component {
     try {
       const clubMems = await getThousandClub('https://records.nhl.com/site/api/milestone-1000-point-career');
       let memIDs = clubMems.data.map(mem => mem.id.skaterId);
-      console.log(memIDs);
-      this.fetchMemberData(memIDs);
+      let memberInfo = await this.createMembers(memIDs);
+      console.log(memberInfo);
     }
     catch (error){
       console.log(error);
     }
   }
 
-  fetchMemberData = async (members) => {
+  createMembers  = (members) => {
+    let memberList = [];
+    members.forEach(async mem => {
+      let memberObj = await this.fetchUser(mem);
+      memberList.push(memberObj);
+    });
+    return memberList
+  }
 
+  fetchUser = async (id) => {
+    let baseInfoURL = `https://statsapi.web.nhl.com/api/v1/people/${id}`;
+    let statsURL = `${baseInfoURL}/stats?stats=careerRegularSeason`;
+    try {
+      const basicUserInfo = await getUserInfo(baseInfoURL);
+      const userStats = await getUserInfo(statsURL);
+      const user = await this.createUser(basicUserInfo, userStats);
+      return user
+    }
+    catch (error) {
+      this.setState({error: error.message});
+    }
   }
 
   createUser = (basicUserInfo, userStatsInfo) => {
