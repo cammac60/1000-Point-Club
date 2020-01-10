@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getUserInfo } from '../../apiCalls/apiCalls';
 import { addUser } from '../../actions';
 import './Splash.scss';
 
