@@ -40,12 +40,21 @@ export class Header extends Component {
         }
     };
     try {
-      const clubMems = await getThousandClub('https://records.nhl.com/site/api/milestone-1000-point-career', options);
-      
+      const response = await getThousandClub('https://records.nhl.com/site/api/milestone-1000-point-career', options);
+      let clubMems = response.data;
+      let memIDs = clubMems.reduce((acc, mem) => {
+        acc.push(mem.id.skaterId);
+        return acc;
+      }, []);
+      this.fetchMemberData(memIDs);
     }
     catch (error){
       console.log(error);
     }
+  }
+
+  fetchMemberData = async (members) => {
+
   }
 
   createUser = (basicUserInfo, userStatsInfo) => {
