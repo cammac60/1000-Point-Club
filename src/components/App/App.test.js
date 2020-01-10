@@ -162,4 +162,21 @@ describe('App', () => {
 
   });
 
+  describe('createMembers', () => {
+    const memberIDs = [1, 2];
+
+    it.skip('Should return a member list', async () => {
+      instance.fetchUser = jest.fn(num => num * 2);
+      const create = await instance.createMembers(memberIDs);
+      expect(create).toHaveReturnedWith([2, 4]);
+    });
+
+    it('Should call fetchUser for each member', async () => {
+      instance.fetchUser = jest.fn(num => num * 2);
+      await instance.createMembers(memberIDs);
+      expect(instance.fetchUser).toHaveBeenCalledTimes(2);
+    });
+
+  });
+
 });
