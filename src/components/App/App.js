@@ -22,7 +22,7 @@ class App extends Component {
   render = () => {
     return (
       <div className="App">
-        <Route exact path="/" render={() => <Splash />} />
+        <Route exact path="/" render={() => <Splash fetchUser={this.fetchUser}/>} />
         <Route exact path="/profile" render={() =>
           this.props.user ?
           <>

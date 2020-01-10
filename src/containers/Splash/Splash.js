@@ -36,44 +36,15 @@ export class Splash extends Component {
     });
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
     if (this.state.id) {
-      this.fetchUser(this.state);
+      let user = await this.props.fetchUser(this.state.id);
+      this.props.addUser(user);
+      this.props.history.push('/profile');
     } else {
         this.setState({error: 'Please enter an ID'});
     }
-  }
-
-  fetchUser = async ({ id }) => {
-    let baseInfoURL = `https://statsapi.web.nhl.com/api/v1/people/${id}`;
-    let statsURL = `${baseInfoURL}/stats?stats=careerRegularSeason`;
-    try {
-      const basicUserInfo = await getUserInfo(baseInfoURL);
-      const userStats = await getUserInfo(statsURL);
-      const user = await this.createUser(basicUserInfo, userStats);
-      this.props.addUser(user);
-      this.props.history.push('/profile');
-    }
-    catch (error) {
-      this.setState({error: error.message});
-    }
-  }
-
-  createUser = (basicUserInfo, userStatsInfo) => {
-    let basicData = basicUserInfo.people[0];
-    let userCareerStats = userStatsInfo.stats[0].splits[0].stat;
-    let user = {
-      id: basicData.id,
-      name: basicData.fullName,
-      birthDate: basicData.birthDate,
-      birthCity: basicData.birthCity,
-      birthStateProvince: basicData.birthStateProvince,
-      birthCountry: basicData.birthCountry,
-      position: basicData.primaryPosition.code,
-      stats: userCareerStats
-    }
-    return user;
   }
 
 }
