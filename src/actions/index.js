@@ -7,3 +7,8 @@ export const removeUser = () => ({
   type: 'REMOVE_USER',
   user: null
 });
+
+export const addMembers = clubMembers => ({
+  type: 'ADD_MEMBERS',
+  members: clubMembers
+})

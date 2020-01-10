@@ -23,13 +23,18 @@ const App = props => {
         <Loader />
       }
       />
-      <Route exact path="/1000club" render={() => <Loader />}/>
+      <Route exact path="/1000club" render={() =>
+        props.members ?
+        <Club /> :
+        <Loader />}
+      />
     </div>
   );
 }
 
 export const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  members: state.members
 });
 
 export default connect(mapStateToProps)(App);

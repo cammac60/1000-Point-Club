@@ -15,3 +15,5 @@ export class Club extends Component {
   }
 
 }
+
+export default Club;

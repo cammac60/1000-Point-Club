@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { removeUser } from '../../actions';
+import { removeUser, addMembers } from '../../actions';
 import { getThousandClub, getUserInfo } from '../../apiCalls/apiCalls';
 import './Header.scss';
 
@@ -36,7 +36,7 @@ export class Header extends Component {
       const clubMems = await getThousandClub('https://records.nhl.com/site/api/milestone-1000-point-career');
       let memIDs = clubMems.data.map(mem => mem.id.skaterId);
       let memberInfo = await this.createMembers(memIDs);
-      console.log(memberInfo);
+      this.props.addMembers(memberInfo);
     }
     catch (error){
       console.log(error);
@@ -86,7 +86,8 @@ export class Header extends Component {
 
 export const mapDispatchToProps = dispatch => (
   bindActionCreators({
-    removeUser
+    removeUser,
+    addMembers
   }, dispatch)
 );
 
