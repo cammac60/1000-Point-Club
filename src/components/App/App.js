@@ -8,6 +8,7 @@ import Splash from '../../containers/Splash/Splash.js';
 import Header from '../Header/Header';
 import Loader from '../Loader/Loader';
 import Profile from '../Profile/Profile';
+import Club from '../../containers/Club/Club';
 
 const App = props => {
   return (
