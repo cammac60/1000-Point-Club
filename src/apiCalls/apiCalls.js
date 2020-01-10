@@ -7,9 +7,9 @@ export const getUserInfo = async (url) => {
   return playerInfo;
 }
 
-export const getThousandClub = async (url, options) => {
-  let fullURL = `https://cors-anywhere.herokuapp.com/${url}`
-  const response = await fetch(fullURL, options);
+export const getThousandClub = async (url) => {
+  let fullURL = `https://cors-anywhere.herokuapp.com/${url}`;
+  const response = await fetch(fullURL);
   if (!response.ok) {
     throw new Error('There was an error getting your information.');
   }

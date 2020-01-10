@@ -32,20 +32,10 @@ export class Header extends Component {
   }
 
   fetchClub = async () => {
-    let options = {
-        method: 'GET',
-        headers: {
-         'Content-Type': 'application/json',
-         'Access-Control-Allow-Origin': 'true',
-        }
-    };
     try {
-      const response = await getThousandClub('https://records.nhl.com/site/api/milestone-1000-point-career', options);
-      let clubMems = response.data;
-      let memIDs = clubMems.reduce((acc, mem) => {
-        acc.push(mem.id.skaterId);
-        return acc;
-      }, []);
+      const clubMems = await getThousandClub('https://records.nhl.com/site/api/milestone-1000-point-career');
+      let memIDs = clubMems.data.map(mem => mem.id.skaterId);
+      console.log(memIDs);
       this.fetchMemberData(memIDs);
     }
     catch (error){
