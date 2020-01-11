@@ -79,7 +79,6 @@ export class Club extends Component {
 
   addPlayerToSelected = ({ target }) => {
     let player = this.props.members.find(mem => mem.id === parseInt(target.id));
-    console.log(player);
     this.props.addSelectedPlayer(player)
   }
 

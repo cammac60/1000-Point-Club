@@ -23,4 +23,29 @@ describe('actions', () => {
     expect(result).toEqual(expectedAction);
   });
 
+  it('Should have a type of ADD_MEMBERS for an addMembers action', () => {
+    const mockPlayers = [
+      {id: 1},
+      {id: 2}
+    ];
+    const expectedAction = {
+      type: 'ADD_MEMBERS',
+      members: mockPlayers
+    };
+    const result = actions.addMembers(mockPlayers);
+    expect(result).toEqual(expectedAction);
+  });
+
+  it('Should have a type of SELECT_PLAYER for an addSelectedPlayer action', () => {
+    const mockPlayer = {
+      id: 1
+    };
+    const expectedAction = {
+      type: 'SELECT_PLAYER',
+      player: mockPlayer
+    };
+    const result = actions.addSelectedPlayer(mockPlayer);
+    expect(result).toEqual(expectedAction);
+  });
+
 });
