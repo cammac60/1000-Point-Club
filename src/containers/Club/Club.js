@@ -13,6 +13,8 @@ export class Club extends Component {
     let sortedMembers = this.sortMembers(this.props.members);
 
     let cards = this.props.members.map((mem, i) => {
+      let stats = mem.stats;
+      let ppg = Math.round((stats.points / stats.games) * 100) / 100;
       let hometown;
       mem.birthStateProvince ?
       hometown = `${mem.birthCity}\, ${mem.birthStateProvince}\, ${mem.birthCountry}` :
@@ -33,6 +35,27 @@ export class Club extends Component {
             <Link className="versus-link" to="/vs" id={mem.id}>You vs. Him</Link>
           </section>
           <section className="player-stats">
+            <h4 className="player-stats-header">Stats</h4>
+            <div className="player-stat-wrapper-small">
+              <span className="player-stat-label">Goals:   </span>
+              <span className="player-stat-num">{stats.goals}</span>
+            </div>
+            <div className="player-stat-wrapper-small">
+              <span className="player-stat-label">Assists:   </span>
+              <span className="player-stat-num">{stats.assists}</span>
+            </div>
+            <div className="player-stat-wrapper-small">
+              <span className="player-stat-label">Points:   </span>
+              <span className="player-stat-num">{stats.points}</span>
+            </div>
+            <div className="player-stat-wrapper-small">
+              <span className="player-stat-label">GP:   </span>
+              <span className="player-stat-num">{stats.games}</span>
+            </div>
+            <div className="player-stat-wrapper-small">
+              <span className="player-stat-label">PPG:   </span>
+              <span className="player-stat-num">{ppg}</span>
+            </div>
           </section>
         </section>
       )

@@ -15,9 +15,10 @@
   }
   margin: {
     bottom: 2%;
-    left: 2%;
-    top: 2%;
+    left: 5.5%;
+    top: 0;
   }
+  padding-top: 20px;
 }
 
 .welcome-header-1k {
@@ -106,4 +107,38 @@
 
 .feedback-text {
   font-size: 1.4rem;
+}
+
+.player-stats {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  width: 40%;
+}
+
+.player-stats-header {
+  font: {
+    family: $large-font;
+    size: 4rem;
+  }
+  margin: {
+    bottom: 0;
+    top: 0;
+  }
+}
+
+.player-stat-wrapper-small {
+  font-size: 1.5rem;
+}
+
+.player-stat-label {
+  font-weight: bold;
+  text-align: left;
+  width: 50%;
+}
+
+.player-stat-num {
+  text-align: right;
+  width: 50%;
 }
