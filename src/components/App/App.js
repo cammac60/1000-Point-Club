@@ -14,6 +14,7 @@ import Loader from '../Loader/Loader';
 import Profile from '../Profile/Profile';
 import Club from '../../containers/Club/Club';
 import { CheatSheet } from '../CheatSheet/CheatSheet';
+import { Versus } from '../Versus/Versus';
 
 export class App extends Component {
   constructor(props) {
@@ -42,6 +43,7 @@ export class App extends Component {
           <Loader />}
         />
         <Route exact path="/cheat-sheet" render={() => <CheatSheet />}/>
+        <Route exact path="/vs" render={() => <Versus user={this.props.user} selected={this.props.selected}/>}/>
       </div>
     );
   }
@@ -105,7 +107,8 @@ export class App extends Component {
 
 export const mapStateToProps = state => ({
   user: state.user,
-  members: state.members
+  members: state.members,
+  selected: state.selected
 });
 
 export const mapDispatchToProps = dispatch => (
