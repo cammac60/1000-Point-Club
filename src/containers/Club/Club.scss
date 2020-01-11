@@ -10,18 +10,88 @@
     size: cover;
   }
   background-blend-mode: darken;
+  color: $text-color;
   font-family: $small-font;
   height: 90%;
   margin: 0;
+  overflow-x: scroll;
   width: 100%;
 }
 
 .legend-card {
+  background-color: $secondary-accent-color-transparent;
+  background-blend-mode: lighten;
+  border: 2px solid $main-accent-color;
+  display: flex;
   height: 40%;
+  justify-content: space-between;
   margin: {
     left: auto;
     right: auto;
     top: 5%;
   }
   width: 90%;
+}
+
+.rank-num {
+  background-color: $main-color;
+  border-radius: 4px;
+  font: {
+    family: $large-font;
+    size: 4rem;
+    weight: bold;
+  }
+  height: 20%;
+  margin: {
+    bottom: 0;
+    left: 3%;
+    top: 0;
+  }
+  padding: 15px;
+}
+
+.player-info {
+  margin: {
+    left: 3%;
+    right: auto;
+  }
+}
+
+.player-name {
+  font: {
+    family: $large-font;
+    size: 4rem;
+    weight: bold;
+  }
+  margin: {
+    bottom: 0;
+    top: 0;
+  }
+  text-align: left;
+}
+
+.info-label {
+  font-weight: bold;
+}
+
+.player-info-small-wrap {
+  font-size: 1.2rem;
+  text-align: left;
+}
+
+.flag-icon {
+  margin-left: 10px;
+  max-height: 20px;
+  vertical-align: middle;
+}
+
+.versus-link {
+  color: $text-color;
+  display: block;
+  font-size: 1.7rem;
+  margin-top: 15%;
+  text-align: left;
+  &:hover {
+    color: $main-color;
+  }
 }
