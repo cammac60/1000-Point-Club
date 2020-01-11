@@ -13,6 +13,7 @@ import Header from '../Header/Header';
 import Loader from '../Loader/Loader';
 import Profile from '../Profile/Profile';
 import Club from '../../containers/Club/Club';
+import { CheatSheet } from '../CheatSheet/CheatSheet';
 
 export class App extends Component {
   constructor(props) {
@@ -40,6 +41,7 @@ export class App extends Component {
           </> :
           <Loader />}
         />
+        <Route exact path="/cheat-sheet" render={() => <CheatSheet />}/>
       </div>
     );
   }

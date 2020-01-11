@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addUser } from '../../actions';
@@ -24,6 +24,7 @@ export class Splash extends Component {
           <button className="sign-in-btn" onClick={(event) => this.handleSubmit(event)}>Sign In</button>
           <span className="sign-in-error">{this.state.error}</span>
         </form>
+        <Link to="/cheat-sheet" className="cheat-sheet-link">Find an ID</Link>
       </div>
     )
   }

@@ -15,6 +15,7 @@
 
 .sign-in-form {
   margin: {
+    bottom: 10%;
     left: auto;
     right: auto;
   }
@@ -85,4 +86,12 @@ h1 {
 .sign-in-error {
   color: red;
   family: $small-font;
+}
+
+.cheat-sheet-link {
+  color: $text-color;
+  font-size: 1.7rem;
+  &:hover {
+    color: $text-color-large;
+  }
 }
