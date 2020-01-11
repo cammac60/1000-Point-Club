@@ -23,7 +23,7 @@ export class Club extends Component {
       hometown = `${mem.birthCity}\, ${mem.birthCountry}`;
 
       return (
-        <section className="legend-card">
+        <section className="legend-card" key={i}>
           <h3 className="rank-num">{i + 1}</h3>
           <section className="player-info">
             <h3 className="player-name">{mem.name}</h3>
