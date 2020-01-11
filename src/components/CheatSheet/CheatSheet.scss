@@ -1,1 +1,63 @@
 @import '../../variables.scss';
+
+.cheat-sheet-wrap {
+  background: {
+    attachment: fixed;
+    image: url('../../images/backgrounds/cup-background-2.jpg');
+    position: center;
+    repeat: no-repeat;
+    size: cover;
+  }
+  color: $text-color;
+  font-family: $small-font;
+  height: 100%;
+  overflow-x: auto;
+  width: 100%;
+}
+
+.cheat-sheet-back {
+  color: $text-color;
+  display: block;
+  font-size: 1.4rem;
+  padding: {
+    left: 20px;
+    top: 10px;
+  }
+  position: fixed;
+  text-align: left;
+  &:hover {
+    color: $text-color-large;
+  }
+}
+
+.cheat-sheet-title {
+  font: {
+    family: $large-font;
+    size: 3rem;
+  }
+}
+
+.cheat-sheet-tbl {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 2px solid $main-accent-color;
+  border-collapse: collapse;
+  color: $main-color;
+  margin: {
+    bottom: 10%;
+    left: auto;
+    right: auto;
+  }
+  padding: 5px;
+  width: 60%;
+}
+
+.cheat-tbl-row, .cheat-tbl-data {
+  border: 1px solid $main-color;
+}
+
+.cheat-tbl-row {
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: $text-color;
+  }
+}
