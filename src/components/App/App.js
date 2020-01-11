@@ -43,7 +43,12 @@ export class App extends Component {
           <Loader />}
         />
         <Route exact path="/cheat-sheet" render={() => <CheatSheet />}/>
-        <Route exact path="/vs" render={() => <Versus user={this.props.user} selected={this.props.selected}/>}/>
+        <Route exact path="/vs" render={() =>
+          <>
+            <Header />
+            <Versus user={this.props.user} selected={this.props.selected}/>
+          </>
+        }/>
       </div>
     );
   }

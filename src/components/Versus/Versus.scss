@@ -1,1 +1,69 @@
 @import '../../variables.scss';
+
+.versus-wrapper {
+  background: {
+    attachment: fixed;
+    image: url('../../images/backgrounds/stadium.jpg');
+    color: rgba(0, 0, 0, 0.8);
+    position: center;
+    repeat: no-repeat;
+    size: cover;
+  }
+  background-blend-mode: darken;
+  font-family: $small-font;
+  height: 90%;
+  overflow-x: auto;
+  width: 100%;
+}
+
+.versus-header {
+  color: $text-color-large;
+  font: {
+    family: $large-font;
+    size: 5rem;
+  }
+  margin: {
+    bottom: 3%;
+    top: 0;
+  }
+  text-decoration: underline;
+}
+
+.versus-table {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid $main-accent-color;
+  border-collapse: collapse;
+  font-size: 2rem;
+  margin: {
+    bottom: 3%;
+    left: auto;
+    right: auto;
+  }
+  padding: 10px;
+  text-align: left;
+  width: 60%;
+}
+
+.versus-table-num, .versus-tbl-stat-type {
+  border: 1px solid $text-color;
+  padding: 10px;
+}
+
+.versus-message {
+  font-size: 1.7rem;
+}
+
+.versus-tbl-header {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid $main-color;
+  color: $main-color;
+  padding: 10px;
+}
+
+.versus-tbl-row {
+  &:hover {
+    background-color: $text-color-large;
+    border: 1px solid $main-color;
+    color: $main-color;
+  }
+}
