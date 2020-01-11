@@ -3,8 +3,8 @@ import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { getThousandClub, getUserInfo } from '../../apiCalls/apiCalls';
-import { addMembers } from '../../actions';
+import { getThousandClub, getUserInfo, getTeams } from '../../apiCalls/apiCalls';
+import { addMembers, addTeams } from '../../actions';
 
 import './App.scss';
 
@@ -55,6 +55,7 @@ export class App extends Component {
 
   componentDidMount = () => {
     this.fetchClub();
+    this.fetchTeams();
   }
 
   fetchClub = async () => {
@@ -67,6 +68,28 @@ export class App extends Component {
     catch (error){
       console.log(error);
     }
+  }
+
+  fetchTeams = async () => {
+    try {
+      const teamData = await getTeams();
+      const teams = await this.createTeams(teamData.teams);
+      console.log(teams);
+      this.props.addTeams(teams);
+    }
+    catch (error){
+      console.log(error);
+    }
+  }
+
+  createTeams = teamData => {
+    let teams = [];
+    teamData.forEach((team) => {
+      let { id, name, abbreviation, roster } = team;
+      let teamObj = {id, name, abbreviation, roster};
+      teams.push(teamObj);
+    });
+    return teams;
   }
 
   createMembers  = (members) => {
@@ -113,12 +136,14 @@ export class App extends Component {
 export const mapStateToProps = state => ({
   user: state.user,
   members: state.members,
-  selected: state.selected
+  selected: state.selected,
+  teams: state.teams
 });
 
 export const mapDispatchToProps = dispatch => (
   bindActionCreators({
-    addMembers
+    addMembers,
+    addTeams
   }, dispatch)
 );
 

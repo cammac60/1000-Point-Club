@@ -11,6 +11,7 @@ export const Versus = ({ user, selected }) => {
   let message = userStats.points > selectedStats.points ?
   message = `Congrats, you have ${userStats.points - selectedStats.points} more points than ${selected.name}!` :
   `At your current rate, you'll pass ${selected.name} in ${neededGames} games!`;
+  
   return (
     <div className="versus-wrapper">
       <h2 className="versus-header">{user.name} vs. {selected.name}</h2>
