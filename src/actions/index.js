@@ -11,4 +11,9 @@ export const removeUser = () => ({
 export const addMembers = clubMembers => ({
   type: 'ADD_MEMBERS',
   members: clubMembers
-})
+});
+
+export const addSelectedPlayer = player => ({
+  type: 'SELECT_PLAYER',
+  player
+});

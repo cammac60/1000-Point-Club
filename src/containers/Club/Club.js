@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import { bindActionCreators } from 'redux';
+import { addSelectedPlayer } from '../../actions';
 import './Club.scss';
 
 export class Club extends Component {
@@ -16,9 +17,11 @@ export class Club extends Component {
       let stats = mem.stats;
       let ppg = Math.round((stats.points / stats.games) * 100) / 100;
       let hometown;
+
       mem.birthStateProvince ?
       hometown = `${mem.birthCity}\, ${mem.birthStateProvince}\, ${mem.birthCountry}` :
       hometown = `${mem.birthCity}\, ${mem.birthCountry}`;
+
       return (
         <section className="legend-card">
           <h3 className="rank-num">{i + 1}</h3>
@@ -32,7 +35,7 @@ export class Club extends Component {
               <span className="info-label">Birthdate:   </span>
               <span className="player-info-data">{mem.birthDate}</span>
             </div>
-            <Link className="versus-link" to="/vs" id={mem.id}>You vs. Him</Link>
+            <Link className="versus-link" to="/vs" id={mem.id} onClick={(event) => this.addPlayerToSelected(event)}>You vs. Him</Link>
           </section>
           <section className="player-stats">
             <h4 className="player-stats-header">Stats</h4>
@@ -74,11 +77,23 @@ export class Club extends Component {
     });
   }
 
+  addPlayerToSelected = ({ target }) => {
+    let player = this.props.members.find(mem => mem.id === parseInt(target.id));
+    console.log(player);
+    this.props.addSelectedPlayer(player)
+  }
+
 }
+
+export const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    addSelectedPlayer
+  }, dispatch)
+);
 
 export const mapStateToProps = state => ({
   user: state.user,
   members: state.members
 });
 
-export default connect(mapStateToProps)(Club);
+export default connect(mapStateToProps, mapDispatchToProps)(Club);
