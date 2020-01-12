@@ -53,7 +53,7 @@ export class App extends Component {
         <Route exact path="/search" render={() =>
           <>
             <Header />
-            <TeamFilter teams={this.props.teams} selectRoster={this.selectRoster}/>
+            <TeamFilter teams={this.props.teams} selectRoster={this.addRoster}/>
           </>
         }/>
       </div>
@@ -65,7 +65,7 @@ export class App extends Component {
     this.fetchTeams();
   }
 
-  selectRoster = ({ target }) => {
+  addRoster = ({ target }) => {
     let { id } = target;
     let teamObj = this.props.teams.find(team => team.id === parseInt(id));
     let rosterData = teamObj.roster.roster;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { App, mapStateToProps, mapDispatchToProps } from './App.js';
-import { getUserInfo, getThousandClub } from '../../apiCalls/apiCalls';
+import { getUserInfo, getThousandClub, getTeams } from '../../apiCalls/apiCalls';
 import { addMembers } from '../../actions';
 
 jest.mock('../../apiCalls/apiCalls');
@@ -52,6 +52,94 @@ describe('App', () => {
       instance.fetchClub = jest.fn();
       instance.componentDidMount();
       expect(instance.fetchClub).toHaveBeenCalled();
+    });
+
+    it('Should call fetchTeams on page load', () => {
+      instance.fetchTeams = jest.fn();
+      instance.componentDidMount();
+      expect(instance.fetchTeams).toHaveBeenCalled();
+    });
+
+  });
+
+  describe('selectRoster', () => {
+
+    it('Should call the selectRoster method with the correct argument', () => {
+      const mockEvent = {
+        target: {
+          id: 1
+        }
+      };
+      instance.props = {
+        teams: {find: jest.fn(() => {
+          return {roster: {roster: 'data'}}
+        })},
+        history: {push: jest.fn()},
+        selectRoster: jest.fn()
+      }
+      instance.createRoster = jest.fn(rost => rost);
+      instance.addRoster(mockEvent);
+      expect(instance.props.selectRoster).toHaveBeenCalledWith('data');
+    });
+
+    it('Should call the createRoster method with the correct argument', () => {
+      const mockEvent = {
+        target: {
+          id: 1
+        }
+      };
+      instance.props = {
+        teams: {find: jest.fn(() => {
+          return {roster: {roster: 'data'}}
+        })},
+        history: {push: jest.fn()},
+        selectRoster: jest.fn()
+      }
+      instance.createRoster = jest.fn(rost => rost);
+      instance.addRoster(mockEvent);
+      expect(instance.createRoster).toHaveBeenCalledWith('data');
+    });
+
+    it('Should push the correct URL to history', () => {
+      const mockEvent = {
+        target: {
+          id: 1
+        }
+      };
+      instance.props = {
+        teams: {find: jest.fn(() => {
+          return {roster: {roster: 'data'}}
+        })},
+        history: {push: jest.fn()},
+        selectRoster: jest.fn()
+      }
+      instance.createRoster = jest.fn(rost => rost);
+      instance.addRoster(mockEvent);
+      expect(instance.props.history.push).toHaveBeenCalledWith('/search/roster');
+    });
+
+  });
+
+  describe('createRoster', () => {
+
+    it('Should return a player object with the correct data', () => {
+      const mockSkater = {
+        position: {code: 'D'},
+        person: {id: 1, fullName: 'name1'}
+      };
+      const mockPlayers = [
+        {
+          position: {code: 'G'},
+          person: {id: 2, fullName: 'name2'}
+        },
+        mockSkater
+      ];
+      let result = instance.createRoster(mockPlayers);
+      expect(result).toEqual([{
+        id: 1,
+        name: 'name1',
+        position: 'D'
+      }]);
     });
 
   });
