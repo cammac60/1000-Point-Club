@@ -13,6 +13,7 @@ import Header from '../Header/Header';
 import Loader from '../Loader/Loader';
 import Profile from '../Profile/Profile';
 import Club from '../../containers/Club/Club';
+import RosterSearch from '../../containers/RosterSearch/RosterSearch';
 import { CheatSheet } from '../CheatSheet/CheatSheet';
 import { Versus } from '../Versus/Versus';
 import { TeamFilter } from '../TeamFilter/TeamFilter';
@@ -56,6 +57,12 @@ export class App extends Component {
             <TeamFilter teams={this.props.teams} selectRoster={this.addRoster}/>
           </>
         }/>
+        <Route exact path="/search/roster" render={() =>
+          <>
+            <Header />
+            <RosterSearch fetchUser={this.fetchUser} />
+          </>
+        }/>
       </div>
     );
   }
@@ -69,7 +76,10 @@ export class App extends Component {
     let { id } = target;
     let teamObj = this.props.teams.find(team => team.id === parseInt(id));
     let rosterData = teamObj.roster.roster;
-    let roster = this.createRoster(rosterData);
+    let roster = {
+      id: id,
+      roster: this.createRoster(rosterData)
+    }
     this.props.selectRoster(roster);
     this.props.history.push('/search/roster');
   }

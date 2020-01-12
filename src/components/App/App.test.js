@@ -79,7 +79,7 @@ describe('App', () => {
       }
       instance.createRoster = jest.fn(rost => rost);
       instance.addRoster(mockEvent);
-      expect(instance.props.selectRoster).toHaveBeenCalledWith('data');
+      expect(instance.props.selectRoster).toHaveBeenCalledWith({id: 1, roster: 'data'});
     });
 
     it('Should call the createRoster method with the correct argument', () => {
