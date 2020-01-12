@@ -15,6 +15,7 @@ import Profile from '../Profile/Profile';
 import Club from '../../containers/Club/Club';
 import { CheatSheet } from '../CheatSheet/CheatSheet';
 import { Versus } from '../Versus/Versus';
+import { TeamFilter } from '../TeamFilter/TeamFilter';
 
 export class App extends Component {
   constructor(props) {
@@ -49,6 +50,12 @@ export class App extends Component {
             <Versus user={this.props.user} selected={this.props.selected}/>
           </>
         }/>
+        <Route exact path="/search" render={() =>
+          <>
+            <Header />
+            <TeamFilter teams={this.props.teams}/>
+          </>
+        }/>
       </div>
     );
   }
@@ -74,7 +81,6 @@ export class App extends Component {
     try {
       const teamData = await getTeams();
       const teams = await this.createTeams(teamData.teams);
-      console.log(teams);
       this.props.addTeams(teams);
     }
     catch (error){

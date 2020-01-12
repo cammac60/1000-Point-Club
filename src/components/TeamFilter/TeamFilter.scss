@@ -1,0 +1,33 @@
+@import '../../variables.scss';
+
+.team-filter-wrapper {
+  background: {
+    attachment: fixed;
+    color: $main-color;
+    position: center;
+    repeat: no-repeat;
+    size: cover;
+  }
+  display: grid;
+  grid-row-gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  height: 90%;
+  max-height: 90%;
+  margin: 0;
+  overflow-x: auto;
+  text-align: center;
+  width: 100%;
+}
+
+.team-logo {
+  display: block;
+  height: 200px;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
+.team-btn {
+  height: 30%;
+}
