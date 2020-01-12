@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -53,7 +53,7 @@ export class App extends Component {
         <Route exact path="/search" render={() =>
           <>
             <Header />
-            <TeamFilter teams={this.props.teams}/>
+            <TeamFilter teams={this.props.teams} selectRoster={this.selectRoster}/>
           </>
         }/>
       </div>
@@ -63,6 +63,24 @@ export class App extends Component {
   componentDidMount = () => {
     this.fetchClub();
     this.fetchTeams();
+  }
+
+  selectRoster = ({ target }) => {
+    let { id } = target;
+    let teamObj = this.props.teams.find(team => team.id === parseInt(id));
+    let rosterData = teamObj.roster.roster;
+    let roster = this.createRoster(rosterData);
+    console.log(roster);
+  }
+
+  createRoster = rosterData => {
+    let filteredRoster = rosterData.filter(player => player.position.code !== 'G');
+    return filteredRoster.map(player => {
+      return {
+        id: player.person.id,
+        name: player.person.fullName
+      }
+    })
   }
 
   fetchClub = async () => {
@@ -153,4 +171,4 @@ export const mapDispatchToProps = dispatch => (
   }, dispatch)
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

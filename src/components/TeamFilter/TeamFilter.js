@@ -3,12 +3,12 @@ import React from 'react';
 import './TeamFilter.scss';
 
 export const TeamFilter = (props) => {
-  let { teams } = props;
-  console.log(teams);
+  let { teams, selectRoster } = props;
+  teams.sort((a, b) => a.abbreviation.localeCompare(b.abbreviation));
   let teamButtons = teams.map((team) => {
     return (
-      <div key={team.id} className="team-btn" id={team.id}>
-        <img src={require(`../../images/logos/${team.abbreviation}.svg`)} alt={`${team.name} Logo`} className="team-logo"/>
+      <div key={team.id} className="team-btn" id={team.id} onClick={(event) => selectRoster(event)}>
+        <img src={require(`../../images/logos/${team.abbreviation}.svg`)} alt={`${team.name} Logo`} className="team-logo" id={team.id}/>
         {team.name}
       </div>
     )
