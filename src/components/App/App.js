@@ -46,10 +46,12 @@ export class App extends Component {
         />
         <Route exact path="/cheat-sheet" render={() => <CheatSheet />}/>
         <Route exact path="/vs" render={() =>
+          this.props.selected ?
           <>
             <Header />
             <Versus user={this.props.user} selected={this.props.selected}/>
-          </>
+          </> :
+          <Loader />
         }/>
         <Route exact path="/search" render={() =>
           <>

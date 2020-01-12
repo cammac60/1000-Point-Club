@@ -8,10 +8,11 @@ export const Versus = ({ user, selected }) => {
   let userPPG = Math.round((userStats.points / userStats.games) * 100) / 100;
   let selectedPPG = Math.round((selectedStats.points / selectedStats.games) * 100) / 100;
   let neededGames = Math.ceil(selectedStats.points / userPPG);
-  let message = userStats.points > selectedStats.points ?
+  let message;
+  userStats.points > selectedStats.points ?
   message = `Congrats, you have ${userStats.points - selectedStats.points} more points than ${selected.name}!` :
-  `At your current rate, you'll pass ${selected.name} in ${neededGames} games!`;
-  
+  message = `At your current rate, you'll pass ${selected.name} in ${neededGames} games!`;
+
   return (
     <div className="versus-wrapper">
       <h2 className="versus-header">{user.name} vs. {selected.name}</h2>
