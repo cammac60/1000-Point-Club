@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { getThousandClub, getUserInfo, getTeams } from '../../apiCalls/apiCalls';
-import { addMembers, addTeams } from '../../actions';
+import { addMembers, addTeams, selectRoster } from '../../actions';
 
 import './App.scss';
 
@@ -70,7 +70,7 @@ export class App extends Component {
     let teamObj = this.props.teams.find(team => team.id === parseInt(id));
     let rosterData = teamObj.roster.roster;
     let roster = this.createRoster(rosterData);
-    console.log(roster);
+    this.props.selectRoster(roster);
   }
 
   createRoster = rosterData => {
@@ -161,13 +161,15 @@ export const mapStateToProps = state => ({
   user: state.user,
   members: state.members,
   selected: state.selected,
-  teams: state.teams
+  teams: state.teams,
+  roster: state.roster
 });
 
 export const mapDispatchToProps = dispatch => (
   bindActionCreators({
     addMembers,
-    addTeams
+    addTeams,
+    selectRoster
   }, dispatch)
 );
 

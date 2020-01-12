@@ -22,3 +22,8 @@ export const addTeams = teams => ({
   type: 'ADD_TEAMS',
   teams
 });
+
+export const selectRoster = roster => ({
+  type: 'SELECT_ROSTER',
+  roster
+});
