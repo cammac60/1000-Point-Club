@@ -71,6 +71,7 @@ export class App extends Component {
     let rosterData = teamObj.roster.roster;
     let roster = this.createRoster(rosterData);
     this.props.selectRoster(roster);
+    this.props.history.push('/search/roster');
   }
 
   createRoster = rosterData => {
@@ -78,7 +79,8 @@ export class App extends Component {
     return filteredRoster.map(player => {
       return {
         id: player.person.id,
-        name: player.person.fullName
+        name: player.person.fullName,
+        position: player.position.code
       }
     })
   }
