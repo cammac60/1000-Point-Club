@@ -58,4 +58,14 @@ describe('actions', () => {
     expect(result).toEqual(expectedAction);
   });
 
+  it('Should have a type of SELECT_ROSTER for a selectRoster action', () => {
+    const mockRoster = [{id: 1}, {id: 2}];
+    const expectedAction = {
+      type: 'SELECT_ROSTER',
+      roster: mockRoster
+    };
+    const result = actions.selectRoster(mockRoster);
+    expect(result).toEqual(expectedAction);
+  });
+
 });
