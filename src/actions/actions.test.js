@@ -48,4 +48,14 @@ describe('actions', () => {
     expect(result).toEqual(expectedAction);
   });
 
+  it('Should have a type of ADD_TEAMS for an addTeams action', () => {
+    const mockTeams = [{id: 1}, {id: 2}];
+    const expectedAction = {
+      type: 'ADD_TEAMS',
+      teams: mockTeams
+    };
+    const result = actions.addTeams(mockTeams);
+    expect(result).toEqual(expectedAction);
+  });
+
 });
