@@ -1,0 +1,72 @@
+@import '../../variables.scss';
+
+.roster-search-wrapper {
+  background: {
+    attachment: fixed;
+    position: center;
+    repeat: no-repeat;
+    size: cover;
+  }
+  color: $text-color;
+  font-family: $small-font;
+  height: 90%;
+  margin: 0;
+  overflow-x: auto;
+  text-align: center;
+  width: 100%;
+}
+
+.roster-head-wrapper {
+  background-color: $main-color;
+  border-bottom: 2px solid $text-color-large;
+  display: flex;
+  height: 20%;
+  justify-content: space-between;
+  margin-bottom: 5%;
+  position: fixed;
+  width: 100%;
+}
+
+.roster-team-logo {
+  height: 100%;
+}
+
+.roster-header {
+  display: inline;
+  font: {
+    family: $large-font;
+    size: 5rem;
+  }
+  margin: {
+    bottom: 0;
+    left: 3%;
+    right: auto;
+    top: 0;
+  }
+  padding-top: 20px;
+}
+
+.roster-tbl {
+  border-collapse: collapse;
+  font-size: 1.6rem;
+  margin: {
+    bottom: 5%;
+    left: auto;
+    right: auto;
+    top: 20%;
+  }
+  text-align: left;
+  width: 80%;
+}
+
+.roster-table-head, .roster-tbl-data, .roster-tbl {
+  border: 2px solid $main-accent-color;
+  padding: 10px;
+}
+
+.roster-ply-select {
+  color: $text-color;
+  &:hover {
+    color: $text-color-large;
+  }
+}
