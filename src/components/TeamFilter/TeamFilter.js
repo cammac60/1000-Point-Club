@@ -15,8 +15,8 @@ export const TeamFilter = (props) => {
   });
   return (
     <div className="team-filter-wrapper">
-    <h3 className="team-filter-header">Select a team:</h3>
-    {teamButtons}
+      <h3 className="team-filter-header">Select a team:</h3>
+      {teamButtons}
     </div>
   )
 }

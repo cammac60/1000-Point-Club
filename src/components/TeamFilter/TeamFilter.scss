@@ -9,6 +9,8 @@
     size: cover;
   }
   display: grid;
+  font-family: $small-font;
+  grid-column-gap: 20px;
   grid-row-gap: 20px;
   grid-template-columns: repeat(4, 1fr);
   height: 90%;
@@ -29,5 +31,29 @@
 }
 
 .team-btn {
-  height: 30%;
+  border: 1px outset $text-color;
+  cursor: pointer;
+  font-size: 1.6rem;
+  height: 90%;
+  margin: {
+    left: 20px;
+    right: 20px;
+  }
+  padding-bottom: 20px;
+  -webkit-box-shadow: 5px 5px 15px rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 5px 5px 15px rgba(255, 255, 255, 0.5);
+  &:active {
+    background-color: $text-color-large;
+    color: $main-color;
+  }
+}
+
+.team-filter-header {
+  color: $text-color-large;
+  font: {
+    family: $large-font;
+    size: 6rem;
+  }
+  grid-area: 1 / 1 / 2 / 5;
+  margin: 0;
 }
