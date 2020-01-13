@@ -9,7 +9,7 @@ jest.mock('../../apiCalls/apiCalls');
 describe('Splash', () => {
   let wrapper, instance, mockEvent;
   const addUser = jest.fn();
-  const fetchUser =jest.fn();
+  let fetchUser =jest.fn();
   const mockProps = {
     addUser,
     fetchUser,
@@ -87,15 +87,28 @@ describe('Splash', () => {
       expect(instance.props.fetchUser).toHaveBeenCalledWith(instance.state.id);
     });
 
-    it('Should add the correcrt error message to state if no ID has been entered', () => {
+    it('Should add the correcrt error message to state if no ID has been entered', async () => {
       instance.state = {
         id: '',
         error: ''
       };
-      instance.handleSubmit(mockEvent);
+      await instance.handleSubmit(mockEvent);
       expect(instance.state).toEqual({
         id: '',
         error: 'Please enter an ID'
+      });
+    });
+
+    it('Should add the correct error message to state if an incorrect ID has been entered', async () => {
+      instance.state = {
+        id: '4',
+        error: ''
+      };
+      fetchUser = jest.fn(() => undefined);
+      await instance.handleSubmit(mockEvent);
+      expect(instance.state).toEqual({
+        id: '4',
+        error: 'We couldn\'t find a user associated with that ID'
       });
     });
 
