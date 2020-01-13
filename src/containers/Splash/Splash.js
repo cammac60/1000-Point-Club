@@ -38,12 +38,14 @@ export class Splash extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    if (this.state.id) {
-      let user = await this.props.fetchUser(this.state.id);
+    let user = await this.props.fetchUser(this.state.id);
+    if (this.state.id && user) {
       this.props.addUser(user);
       this.props.history.push('/profile');
-    } else {
+    } if (!this.state.id) {
         this.setState({error: 'Please enter an ID'});
+    } else {
+        this.setState({error: 'We couldn\'t find a user associated with that ID'});
     }
   }
 
