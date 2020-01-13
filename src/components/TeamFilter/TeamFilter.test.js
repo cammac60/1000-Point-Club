@@ -33,9 +33,9 @@ describe('TeamFilter', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it.skip('Should call the selectRoster method on click of a button with the correct agrument', () => {
+  it('Should call the selectRoster method on click of a button with the correct agrument', () => {
     wrapper.find('.team-btn').first().simulate('click', mockEvent);
-    expect(wrapper.props.selectRoster).toHaveBeenCalledWith(mockEvent);
+    expect(selectRoster).toHaveBeenCalledWith(mockEvent);
   });
 
 });
