@@ -50,7 +50,7 @@ describe('RosterSearch', () => {
       expect(instance.props.fetchUser).toHaveBeenCalledWith(1);
     });
 
-    it.skip('Should call the addSelectedPlayer method with the correct argument', () => {
+    it('Should call the addSelectedPlayer method with the correct argument', () => {
       fetchUser = jest.fn(() => {id: 1});
       instance.addToSelected(mockEvent);
       expect(instance.props.fetchUser).toHaveBeenCalledWith(1);
