@@ -8,10 +8,11 @@ import './Club.scss';
 export class Club extends Component {
   constructor(props) {
     super(props);
+    this.state = {}
   }
 
   render = () => {
-    let sortedMembers = this.sortMembers(this.props.members);
+    this.sortMembers(this.props.members);
 
     let cards = this.props.members.map((mem, i) => {
       let stats = mem.stats;
@@ -19,8 +20,8 @@ export class Club extends Component {
       let hometown;
 
       mem.birthStateProvince ?
-      hometown = `${mem.birthCity}\, ${mem.birthStateProvince}\, ${mem.birthCountry}` :
-      hometown = `${mem.birthCity}\, ${mem.birthCountry}`;
+      hometown = `${mem.birthCity}, ${mem.birthStateProvince}, ${mem.birthCountry}` :
+      hometown = `${mem.birthCity}, ${mem.birthCountry}`;
 
       return (
         <section className="legend-card" key={i}>

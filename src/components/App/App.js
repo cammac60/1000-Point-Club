@@ -21,6 +21,7 @@ import { TeamFilter } from '../TeamFilter/TeamFilter';
 export class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {}
   }
 
   render = () => {

@@ -9,6 +9,7 @@ import './RosterSearch.scss';
 export class RosterSearch extends Component {
   constructor(props) {
     super(props);
+    this.state = {}
   }
 
   render = () => {
