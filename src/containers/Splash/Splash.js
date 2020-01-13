@@ -16,6 +16,7 @@ export class Splash extends Component {
   render = () => {
     return (
       <div className="sign-in-wrapper">
+        <Link to="/cheat-sheet" className="cheat-sheet-link">Need help finding an ID?</Link>
         <form className="sign-in-form">
           <img alt="NHL Logo" className="nhl-logo-lrg" src={require("../../images/logos/NHL_Logo.png")}/>
           <h1>1000 Point Club</h1>
@@ -24,7 +25,6 @@ export class Splash extends Component {
           <button className="sign-in-btn" onClick={(event) => this.handleSubmit(event)}>Sign In</button>
           <span className="sign-in-error">{this.state.error}</span>
         </form>
-        <Link to="/cheat-sheet" className="cheat-sheet-link">Find an ID</Link>
       </div>
     )
   }
