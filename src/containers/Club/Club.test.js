@@ -102,9 +102,9 @@ describe('Club', () => {
 
   describe('addPlayerToSelected', () => {
 
-    it.skip('Should call the addSelectedPlayer method with the correct argument', async () => {
+    it('Should call the addSelectedPlayer method with the correct argument', async () => {
       await instance.addPlayerToSelected(mockEvent);
-      expect(instance.props.addSelectedPlayer).toHaveBeenCalledWith(mockProps.members[0]);
+      expect(addSelectedPlayer).toHaveBeenCalledWith(mockProps.members[1]);
     });
 
   });
