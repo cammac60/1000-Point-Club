@@ -16,8 +16,6 @@
 2. Run `npm install` in your terminal once you've entered the project directory. 
 3. Run `npm start`. 
 
-Note: I'm currently working on getting this app up on Github Pages. This section will be updated with a link once it is ready.
-
 ---------
 
 ### How to Use
@@ -48,4 +46,12 @@ If you'd rather compare yourself to someone more comparable you can navigate to 
 Once again, you can use the "You vs. Him" link to compare stats with the selected player. 
 
 <img width="1440" alt="Screen Shot 2020-01-13 at 3 53 58 PM" src="https://user-images.githubusercontent.com/47998896/72299029-ef4ce680-361c-11ea-9e51-d1a920543f31.png">
+
+----------
+
+### Notes 
+
+- The best resource I have been able to find on the NHL API can be found (here)[https://gitlab.com/dword4/nhlapi] 
+
+- I'm currently working on getting this app up on Github Pages. This section will be updated with a link once it is ready.
 
