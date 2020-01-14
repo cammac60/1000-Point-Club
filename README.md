@@ -51,7 +51,7 @@ Once again, you can use the "You vs. Him" link to compare stats with the selecte
 
 ### Notes 
 
-- The best resource I have been able to find on the NHL API can be found (here)[https://gitlab.com/dword4/nhlapi] 
+- The best resource I have been able to find on the NHL API can be found [here](https://gitlab.com/dword4/nhlapi) 
 
 - I'm currently working on getting this app up on Github Pages. This section will be updated with a link once it is ready.
 
