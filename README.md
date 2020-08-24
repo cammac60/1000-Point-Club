@@ -1,68 +1,57 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 1000 Club
 
-## Available Scripts
+### Overview 
 
-In the project directory, you can run:
+  1000 Club is an app desinged for NHL players who want to check their status amongst the game's greats and see how they stack up. Don't worry, even if you're a casual hockey fan like me you can still sign in as some of your favorite players - that's right, even if you're not in the NHL you can log in and pretend to be your all time favorites (even the likes of John Scott and Danny Heatley). 
+  
+**What is the 1000 Club?**
 
-### `npm start`
+  The 1000 Club are hockey's greatest point getters of all time (aka all of the players who have recorded at least 1000 points in their career). Goalies not included for obvious reasons. 
+  
+---------
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Setup 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+1. Fork this repo and clone down to your local machine.
+2. Run `npm install` in your terminal once you've entered the project directory. 
+3. Run `npm start`. 
 
-### `npm test`
+---------
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### How to Use
 
-### `npm run build`
+On sign in you will land at the splash page which will allow you to sign in with a player ID. Before attempting to sign in you may want to click the help link at the top of the page. This will show you a list of notable active players and their IDs so that you can sign in as one of them. I only picked two players per team in this section so if you want to sign in as someone more obscure you can make a fetch call to `https://statsapi.web.nhl.com/api/v1/teams?expand=team.roster` in your console to view the IDs of all currently active players. 
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img width="1439" alt="Screen Shot 2020-01-13 at 3 25 54 PM" src="https://user-images.githubusercontent.com/47998896/72298507-8153ef80-361b-11ea-92fe-2f10a8d244a8.png">
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Upon sign in you land on the "Your Stats" page which will display some of your (or your favorite players') career stats and how close they are to joining the club. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<img width="1440" alt="Screen Shot 2020-01-13 at 3 45 44 PM" src="https://user-images.githubusercontent.com/47998896/72298616-cb3cd580-361b-11ea-9cde-3bf2f99494e9.png">
 
-### `npm run eject`
+You can use the menu options at the top to sign out, view the club, or search for another active player. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+If you navigate to the club you will see the club members listed in order of points and some basic information about each presented. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<img width="1437" alt="Screen Shot 2020-01-13 at 3 47 42 PM" src="https://user-images.githubusercontent.com/47998896/72298704-11923480-361c-11ea-8085-ec8040ffee2b.png">
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+If you click on the "You vs.Him" link you will be taken to the versus page. Here you can stack up your stats directly with one of the legends and see if you are close to catching them. (Nikita Gusev has a long way to go)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<img width="1439" alt="Screen Shot 2020-01-13 at 3 50 19 PM" src="https://user-images.githubusercontent.com/47998896/72298825-6c2b9080-361c-11ea-99e3-9788042a7838.png">
 
-## Learn More
+If you'd rather compare yourself to someone more comparable you can navigate to the "Search Players" section, select a team, and view their current roster. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<img width="1440" alt="Screen Shot 2020-01-13 at 3 05 47 PM" src="https://user-images.githubusercontent.com/47998896/72298934-b6ad0d00-361c-11ea-903c-dd9d691921b1.png">
+<img width="1440" alt="Screen Shot 2020-01-13 at 3 52 57 PM" src="https://user-images.githubusercontent.com/47998896/72298986-d17f8180-361c-11ea-9f11-ce29d06339d4.png">
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Once again, you can use the "You vs. Him" link to compare stats with the selected player. 
 
-### Code Splitting
+<img width="1440" alt="Screen Shot 2020-01-13 at 3 53 58 PM" src="https://user-images.githubusercontent.com/47998896/72299029-ef4ce680-361c-11ea-9e51-d1a920543f31.png">
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+----------
 
-### Analyzing the Bundle Size
+### Notes 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- The best resource I have been able to find on the NHL API can be found [here](https://gitlab.com/dword4/nhlapi) 
 
-### Making a Progressive Web App
+- I'm currently working on getting this app up on Github Pages. This section will be updated with a link once it is ready.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
