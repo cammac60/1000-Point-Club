@@ -35,11 +35,11 @@ describe('App', () => {
   }
 
   beforeEach(() => {
-    wrapper = shallow(<App {...mockProps}/>);
-    instance = wrapper.instance();
     getThousandClub.mockImplementation(() => {
       return Promise.resolve(mockMembers)
     });
+    wrapper = shallow(<App {...mockProps}/>);
+    instance = wrapper.instance();
   });
 
   it('Should match the snapshot', () => {

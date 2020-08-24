@@ -24,7 +24,7 @@ describe('Header', () => {
 
   it.skip('Should call logOut on click of the logout button', () => {
     instance.logOut = jest.fn();
-    wrapper.find('.sign-out-button').simulate('click');
+    wrapper.find('.sign-out-button').first().simulate('click');
     expect(instance.logOut).toHaveBeenCalled();
   });
 

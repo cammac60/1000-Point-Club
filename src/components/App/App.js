@@ -73,6 +73,7 @@ export class App extends Component {
   componentDidMount = () => {
     this.fetchClub();
     this.fetchTeams();
+    document.title = '1000 Point Club';
   }
 
   addRoster = ({ target }) => {
