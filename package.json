@@ -22,7 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --verbose",
     "eject": "react-scripts eject",
-    "deploy": "serve -s build",
+    "deploy": "serve -s build"
   },
   "eslintConfig": {
     "extends": "react-app"
