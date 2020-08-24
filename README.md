@@ -8,6 +8,8 @@
 
   The 1000 Club are hockey's greatest point getters of all time (aka all of the players who have recorded at least 1000 points in their career). Goalies not included for obvious reasons. 
   
+[Deployed App](https://thousand-point-club.herokuapp.com/)
+  
 ---------
 
 ### Setup 
